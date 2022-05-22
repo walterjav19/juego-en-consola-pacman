@@ -135,7 +135,7 @@ puntos=0;
             }else if(j==5){
              System.out.print(tablerop[i][j]+"|");   
             }else{
-             System.out.print(tablerop[i][j]+" ");
+             System.out.print(tablerop[i][j]+" ");//hola mundo
             }
             
         }
