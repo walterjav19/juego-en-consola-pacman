@@ -182,10 +182,162 @@ puntos=0;
     }    System.out.println("-------------");
     
      ganar=false;
-
+while(ganar==false){
+    jugandotablerop();
+}
 }
 
+static void jugandotablerop(){
+    Scanner a=new Scanner(System.in);
+    movimiento=a.nextLine();
+    movimiento=movimiento.toLowerCase();
+        if (movimiento.equals("w")) {
+        
+            if (tablerop[filas-1][columnas]==" ") {
+            tablerop[filas][columnas]=" ";
+            filas-=1;
+            tablerop[filas][columnas]="^";
+            impp();
+            validartp();  
+            }else if(tablerop[filas-1][columnas]=="$"){
+            tablerop[filas][columnas]=" ";
+            filas-=1;
+            tablerop[filas][columnas]="^";
+            puntos+=15;
+            impp();
+            validartp();   
+            }else if(tablerop[filas-1][columnas]=="0"){
+            tablerop[filas][columnas]=" ";
+            filas-=1;
+            tablerop[filas][columnas]="^";
+            puntos+=10;
+            impp();
+            validartp();    
+            }else if(tablerop[filas-1][columnas]=="@"){
+            tablerop[filas][columnas]=" ";
+            filas-=1;
+            tablerop[filas][columnas]="^";
+            vidas-=1;
+            impp();
+            validartp();    
+        }else if(tablerop[filas-1][columnas]=="X"){
+            tablerop[filas][columnas]="^";
+            System.out.println("hay pared no se puede cruzar");
+            impp();
+            validartp();    
+        }
+            
 
+        }else if(movimiento.equals("s")){
+if (tablerop[filas+1][columnas]==" ") {
+            tablerop[filas][columnas]=" ";
+            filas+=1;
+            tablerop[filas][columnas]="v";
+            impp();
+            validartp();  
+            }else if(tablerop[filas+1][columnas]=="$"){
+            tablerop[filas][columnas]=" ";
+            filas+=1;
+            tablerop[filas][columnas]="v";
+            puntos+=15;
+            impp();
+            validartp();   
+            }else if(tablerop[filas+1][columnas]=="0"){
+            tablerop[filas][columnas]=" ";
+            filas+=1;
+            tablerop[filas][columnas]="v";
+            puntos+=10;
+            impp();
+            validartp();    
+            }else if(tablerop[filas+1][columnas]=="@"){
+            tablerop[filas][columnas]=" ";
+            filas+=1;
+            tablerop[filas][columnas]="v";
+            vidas-=1;
+            impp();
+            validartp();    
+        }else if(tablerop[filas+1][columnas]=="X"){
+            tablerop[filas][columnas]="v";
+            System.out.println("hay pared no se puede cruzar");
+            impp();
+            validartp();    
+        }
+        }else if(movimiento.equals("a")){
+   if (tablerop[filas][columnas-1]==" ") {
+            tablerop[filas][columnas]=" ";
+            columnas-=1;
+            tablerop[filas][columnas]="<";
+            impp();
+            validartp();  
+            }else if(tablerop[filas][columnas-1]=="$"){
+            tablerop[filas][columnas]=" ";
+            columnas-=1;
+            tablerop[filas][columnas]="<";
+            puntos+=15;
+            impp();
+            validartp();   
+            }else if(tablerop[filas][columnas-1]=="0"){
+            tablerop[filas][columnas]=" ";
+            columnas-=1;
+            tablerop[filas][columnas]="<";
+            puntos+=10;
+            impp();
+            validartp();    
+            }else if(tablerop[filas][columnas-1]=="@"){
+            tablerop[filas][columnas]=" ";
+            columnas-=1;
+            tablerop[filas][columnas]="<";
+            vidas-=1;
+            impp();
+            validartp();    
+        }else if(tablerop[filas][columnas-1]=="X"){
+            tablerop[filas][columnas]="<";
+            System.out.println("hay pared no se puede cruzar");
+            impp();
+            validartp();    
+        }       
+
+        }else if(movimiento.equals("d")){
+
+   if (tablerop[filas][columnas+1]==" ") {
+            tablerop[filas][columnas]=" ";
+            columnas+=1;
+            tablerop[filas][columnas]=">";
+            impp();
+            validartp();  
+            }else if(tablerop[filas][columnas+1]=="$"){
+            tablerop[filas][columnas]=" ";
+            columnas+=1;
+            tablerop[filas][columnas]=">";
+            puntos+=15;
+            impp();
+            validartp();   
+            }else if(tablerop[filas][columnas+1]=="0"){
+            tablerop[filas][columnas]=" ";
+            columnas+=1;
+            tablerop[filas][columnas]=">";
+            puntos+=10;
+            impp();
+            validartp();    
+            }else if(tablerop[filas][columnas+1]=="@"){
+            tablerop[filas][columnas]=" ";
+            columnas+=1;
+            tablerop[filas][columnas]=">";
+            vidas-=1;
+            impp();
+            validartp();    
+        }else if(tablerop[filas][columnas+1]=="X"){
+            tablerop[filas][columnas]=">";
+            System.out.println("hay pared no se puede cruzar");
+            impp();
+            validartp();    
+        }    
+        }else{
+            System.out.println("ingrese un movimiento valido");
+        }
+    
+    
+    }
 
 
 
@@ -216,6 +368,67 @@ static void historial(){
     
     System.out.println("");
 }
+
+
+
+static void impp(){
+
+        System.out.println("USUARIO: "+nombre);
+        System.out.println("PUNTEO: "+puntos);
+        System.out.println("VIDAS: "+vidas);
+    System.out.println("-------------");
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 6; j++) {
+            if (j==0) {
+                System.out.print("|"+tablerop[i][j]+" ");
+            }else if(j==5){
+             System.out.print(tablerop[i][j]+"|");   
+            }else{
+             System.out.print(tablerop[i][j]+" ");
+            }
+            
+        }
+        System.out.println("");
+    }    System.out.println("-------------");
+}
+
+
+static void validartp(){
+    int contador=0;
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 6; j++) {
+            if(tablerop[i][j] == "$" || tablerop[i][j] == "0"){
+                contador++;   
+            }
+        }
+    }
+    
+    
+    
+    if (contador==0) {
+        System.out.println("!!!GANASTE FELICIDADES!!!");
+        ganar=true;
+        nombres[cont_nombres]=nombre;
+        cont_nombres++;
+        punteos[cont_punteos]=puntos;
+        cont_punteos++;
+    }
+    if (vidas==0) {
+        System.out.println("!!!PERDISTE LA PARTIDA!!!");
+        ganar=true;
+        nombres[cont_nombres]=nombre;
+        cont_nombres++;
+        punteos[cont_punteos]=puntos;cont_punteos++;
+        
+    }
+    
+}
+
+
+
+
+
+
 
 static void impg(){
 
